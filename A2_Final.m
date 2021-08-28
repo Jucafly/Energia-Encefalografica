@@ -11,6 +11,20 @@ t=0:1/Fs:(1/Fs)*(N-1);...Vector Tiempo
 Fm=Fs/2;...Frecuencia de Nyquist
 f=0:Fm/Nm:Fm/Nm*(Nm-1);...Vector Frecuencia
 
+%3.2.3
+%Beta
+n=6;...Orden
+fc1=0.5;...Aqui definimos
+fc2=4;...Las Frecuencias de Corte
+... En Beta son [0.5-4]Hz
+%Filtros Butter
+%Pasa Altas
+[b1,a1]=butter(n,fc1/Fm,'high');...Coeficiente de Polinomios
+%Pasa Bajas
+[b2,a2]=butter(n,fc2/Fm,'low');...Coeficiente de Polinomios
+
+%/-----------------------------------------------------------------/
+
 %3.2.4
 %Alfa
 n=6;...Orden
@@ -60,7 +74,10 @@ grid on
 title('Espectro de Potencial E1: Banda Alfa')
 ylabel("PE1Alfa")
 
+%Energias
+EE1A=sum(PE1LCM.*PE1LCM)/Nm
 
+%%
     
 
 
