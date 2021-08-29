@@ -766,3 +766,463 @@ EE6A=sum(PE6LCM.*PE6LCM)/Nm
 
 
 
+
+
+
+
+
+
+
+%%
+%/-----------------------------E7-------------------------/
+clc
+clear
+load('EEG.mat')
+%Parametrizacion
+N=length(EEG);
+Fs=1000;...Frecuencia de Muestreo
+Nm=N/2;...Numero de Muestras
+%2.2.1
+t=0:1/Fs:(1/Fs)*(N-1);...Vector Tiempo
+%2.2.2
+Fm=Fs/2;...Frecuencia de Nyquist
+f=0:Fm/Nm:Fm/Nm*(Nm-1);...Vector Frecuencia
+
+%3.2.3
+%Beta
+n=5;...Orden
+fc1=0.5;...Aqui definimos
+fc2=4;...Las Frecuencias de Corte
+... En Beta son [0.5-4]Hz
+%Filtros Butter
+%Pasa Altas
+[b1,a1]=butter(n,fc1/Fm,'high');...Coeficiente de Polinomios
+%Pasa Bajas
+[b2,a2]=butter(n,fc2/Fm,'low');...Coeficiente de Polinomios
+
+%3.2.4
+%Traemos la Señal
+E7b=EEG(:,7);
+E7bT=fft(E7b);...Señal Transformada (Compleja)
+%Potencia del Electrodo
+PEb7=E7bT.*conj(E7bT)/N;...Epectro Espejo
+PE7bM=PEb7(1:Nm);...Espectro De Potencia (grf)
+figure
+%Configuraciones Grafica
+subplot(3,1,1)
+plot(f,PE7bM,'r')
+grid on
+title('Espectro de Potencial E7')
+ylabel("PE7")
+
+%Señal Filtrada HC
+E7bHC=filter(b1,a1,E7b);
+E7bHCT=fft(E7bHC);
+PE7bHC=E7bHCT.*conj(E7bHCT)/N;
+PE7bHCM=PE7bHC(1:Nm);...Espectro Potencia (grf)
+subplot(3,1,2)
+plot(f,PE7bHCM,'g')
+grid on
+title('Espectro de Potencial E7: Altas Frecuencias')
+ylabel("PE7HC")
+
+%Señal Filtrada LC
+E7LC=filter(b2,a2,E7bHC);
+E7LCT=fft(E7LC);
+PE7LC=E7LCT.*conj(E7LCT)/N;
+PE7LCM=PE7LC(1:Nm);...Espectro Potencia Alfa Final (grf)
+subplot(3,1,3)
+plot(f,PE7LCM,'b')
+grid on
+title('Espectro de Potencial E7: Banda Delta')
+ylabel("PE7Delta")
+
+%/-----------------------------------------------------------------/
+
+%3.2.4
+%Alfa
+n=5;...Orden
+fc1=8;...Aqui definimos
+fc2=13;...Las Frecuencias de Corte
+... En Alfa son [8-13]Hz
+%Filtros Butter
+%Pasa Altas
+[b1,a1]=butter(n,fc1/Fm,'high');...Coeficiente de Polinomios
+%Pasa Bajas
+[b2,a2]=butter(n,fc2/Fm,'low');...Coeficiente de Polinomios
+
+%3.2.5
+%Traemos la Señal
+E7=EEG(:,7);
+E7T=fft(E7);...Señal Transformada (Compleja)
+%Potencia del Electrodo
+PE7=E7T.*conj(E7T)/N;...Epectro Espejo
+PE7M=PE7(1:Nm);...Espectro De Potencia (grf)
+figure
+%Configuraciones Grafica
+subplot(3,1,1)
+plot(f,PE7M,'r')
+grid on
+title('Espectro de Potencial E7')
+ylabel("PE7")
+
+%Señal Filtrada HC
+E7HC=filter(b1,a1,E7);
+E7HCT=fft(E7HC);
+PE7HC=E7HCT.*conj(E7HCT)/N;
+PE7HCM=PE7HC(1:Nm);...Espectro Potencia (grf)
+subplot(3,1,2)
+plot(f,PE7HCM,'g')
+grid on
+title('Espectro de Potencial E7: Altas Frecuencias')
+ylabel("PE7HC")
+
+%Señal Filtrada LC
+E7LC=filter(b2,a2,E7HC);
+E7LCT=fft(E7LC);
+PE7LC=E7LCT.*conj(E7LCT)/N;
+PE7LCM=PE7LC(1:Nm);...Espectro Potencia Alfa Final (grf)
+subplot(3,1,3)
+plot(f,PE7LCM,'b')
+grid on
+title('Espectro de Potencial E7: Banda Alfa')
+ylabel("PE7Alfa")
+
+%Energias
+EE7A=sum(PE7LCM.*PE7LCM)/Nm
+
+
+
+
+
+
+
+
+
+
+
+%%
+%/-----------------------------E8-------------------------/
+clc
+clear
+load('EEG.mat')
+%Parametrizacion
+N=length(EEG);
+Fs=1000;...Frecuencia de Muestreo
+Nm=N/2;...Numero de Muestras
+%2.2.1
+t=0:1/Fs:(1/Fs)*(N-1);...Vector Tiempo
+%2.2.2
+Fm=Fs/2;...Frecuencia de Nyquist
+f=0:Fm/Nm:Fm/Nm*(Nm-1);...Vector Frecuencia
+
+%3.2.3
+%Beta
+n=5;...Orden
+fc1=0.5;...Aqui definimos
+fc2=4;...Las Frecuencias de Corte
+... En Beta son [0.5-4]Hz
+%Filtros Butter
+%Pasa Altas
+[b1,a1]=butter(n,fc1/Fm,'high');...Coeficiente de Polinomios
+%Pasa Bajas
+[b2,a2]=butter(n,fc2/Fm,'low');...Coeficiente de Polinomios
+
+%3.2.4
+%Traemos la Señal
+E8b=EEG(:,8);
+E8bT=fft(E8b);...Señal Transformada (Compleja)
+%Potencia del Electrodo
+PEb8=E8bT.*conj(E8bT)/N;...Epectro Espejo
+PE8bM=PEb8(1:Nm);...Espectro De Potencia (grf)
+figure
+%Configuraciones Grafica
+subplot(3,1,1)
+plot(f,PE8bM,'r')
+grid on
+title('Espectro de Potencial E8')
+ylabel("PE8")
+
+%Señal Filtrada HC
+E8bHC=filter(b1,a1,E8b);
+E8bHCT=fft(E8bHC);
+PE8bHC=E8bHCT.*conj(E8bHCT)/N;
+PE8bHCM=PE8bHC(1:Nm);...Espectro Potencia (grf)
+subplot(3,1,2)
+plot(f,PE8bHCM,'g')
+grid on
+title('Espectro de Potencial E8: Altas Frecuencias')
+ylabel("PE8HC")
+
+%Señal Filtrada LC
+E8LC=filter(b2,a2,E8bHC);
+E8LCT=fft(E8LC);
+PE8LC=E8LCT.*conj(E8LCT)/N;
+PE8LCM=PE8LC(1:Nm);...Espectro Potencia Alfa Final (grf)
+subplot(3,1,3)
+plot(f,PE8LCM,'b')
+grid on
+title('Espectro de Potencial E8: Banda Delta')
+ylabel("PE8Delta")
+
+%/-----------------------------------------------------------------/
+
+%3.2.4
+%Alfa
+n=5;...Orden
+fc1=8;...Aqui definimos
+fc2=13;...Las Frecuencias de Corte
+... En Alfa son [8-13]Hz
+%Filtros Butter
+%Pasa Altas
+[b1,a1]=butter(n,fc1/Fm,'high');...Coeficiente de Polinomios
+%Pasa Bajas
+[b2,a2]=butter(n,fc2/Fm,'low');...Coeficiente de Polinomios
+
+%3.2.5
+%Traemos la Señal
+E8=EEG(:,8);
+E8T=fft(E8);...Señal Transformada (Compleja)
+%Potencia del Electrodo
+PE8=E8T.*conj(E8T)/N;...Epectro Espejo
+PE8M=PE8(1:Nm);...Espectro De Potencia (grf)
+figure
+%Configuraciones Grafica
+subplot(3,1,1)
+plot(f,PE8M,'r')
+grid on
+title('Espectro de Potencial E8')
+ylabel("PE8")
+
+%Señal Filtrada HC
+E8HC=filter(b1,a1,E8);
+E8HCT=fft(E8HC);
+PE8HC=E8HCT.*conj(E8HCT)/N;
+PE8HCM=PE8HC(1:Nm);...Espectro Potencia (grf)
+subplot(3,1,2)
+plot(f,PE8HCM,'g')
+grid on
+title('Espectro de Potencial E8: Altas Frecuencias')
+ylabel("PE8HC")
+
+%Señal Filtrada LC
+E8LC=filter(b2,a2,E8HC);
+E8LCT=fft(E8LC);
+PE8LC=E8LCT.*conj(E8LCT)/N;
+PE8LCM=PE8LC(1:Nm);...Espectro Potencia Alfa Final (grf)
+subplot(3,1,3)
+plot(f,PE8LCM,'b')
+grid on
+title('Espectro de Potencial E8: Banda Alfa')
+ylabel("PE8Alfa")
+
+%Energias
+EE8A=sum(PE8LCM.*PE8LCM)/Nm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%
+%/-----------------------------E9-------------------------/
+clc
+clear
+load('EEG.mat')
+%Parametrizacion
+N=length(EEG);
+Fs=1000;...Frecuencia de Muestreo
+Nm=N/2;...Numero de Muestras
+%2.2.1
+t=0:1/Fs:(1/Fs)*(N-1);...Vector Tiempo
+%2.2.2
+Fm=Fs/2;...Frecuencia de Nyquist
+f=0:Fm/Nm:Fm/Nm*(Nm-1);...Vector Frecuencia
+
+%3.2.3
+%Beta
+n=5;...Orden
+fc1=0.5;...Aqui definimos
+fc2=4;...Las Frecuencias de Corte
+... En Beta son [0.5-4]Hz
+%Filtros Butter
+%Pasa Altas
+[b1,a1]=butter(n,fc1/Fm,'high');...Coeficiente de Polinomios
+%Pasa Bajas
+[b2,a2]=butter(n,fc2/Fm,'low');...Coeficiente de Polinomios
+
+%3.2.4
+%Traemos la Señal
+E9b=EEG(:,9);
+E9bT=fft(E9b);...Señal Transformada (Compleja)
+%Potencia del Electrodo
+PEb9=E9bT.*conj(E9bT)/N;...Epectro Espejo
+PE9bM=PEb9(1:Nm);...Espectro De Potencia (grf)
+figure
+%Configuraciones Grafica
+subplot(3,1,1)
+plot(f,PE9bM,'r')
+grid on
+title('Espectro de Potencial E9')
+ylabel("PE9")
+
+%Señal Filtrada HC
+E9bHC=filter(b1,a1,E9b);
+E9bHCT=fft(E9bHC);
+PE9bHC=E9bHCT.*conj(E9bHCT)/N;
+PE9bHCM=PE9bHC(1:Nm);...Espectro Potencia (grf)
+subplot(3,1,2)
+plot(f,PE9bHCM,'g')
+grid on
+title('Espectro de Potencial E9: Altas Frecuencias')
+ylabel("PE9HC")
+
+%Señal Filtrada LC
+E9LC=filter(b2,a2,E9bHC);
+E9LCT=fft(E9LC);
+PE9LC=E9LCT.*conj(E9LCT)/N;
+PE9LCM=PE9LC(1:Nm);...Espectro Potencia Alfa Final (grf)
+subplot(3,1,3)
+plot(f,PE9LCM,'b')
+grid on
+title('Espectro de Potencial E9: Banda Delta')
+ylabel("PE9Delta")
+
+%/-----------------------------------------------------------------/
+
+%3.2.4
+%Alfa
+n=5;...Orden
+fc1=8;...Aqui definimos
+fc2=13;...Las Frecuencias de Corte
+... En Alfa son [8-13]Hz
+%Filtros Butter
+%Pasa Altas
+[b1,a1]=butter(n,fc1/Fm,'high');...Coeficiente de Polinomios
+%Pasa Bajas
+[b2,a2]=butter(n,fc2/Fm,'low');...Coeficiente de Polinomios
+
+%3.2.5
+%Traemos la Señal
+E9=EEG(:,9);
+E9T=fft(E9);...Señal Transformada (Compleja)
+%Potencia del Electrodo
+PE9=E9T.*conj(E9T)/N;...Epectro Espejo
+PE9M=PE9(1:Nm);...Espectro De Potencia (grf)
+figure
+%Configuraciones Grafica
+subplot(3,1,1)
+plot(f,PE9M,'r')
+grid on
+title('Espectro de Potencial E9')
+ylabel("PE9")
+
+%Señal Filtrada HC
+E9HC=filter(b1,a1,E9);
+E9HCT=fft(E9HC);
+PE9HC=E9HCT.*conj(E9HCT)/N;
+PE9HCM=PE9HC(1:Nm);...Espectro Potencia (grf)
+subplot(3,1,2)
+plot(f,PE9HCM,'g')
+grid on
+title('Espectro de Potencial E9: Altas Frecuencias')
+ylabel("PE9HC")
+
+%Señal Filtrada LC
+E9LC=filter(b2,a2,E9HC);
+E9LCT=fft(E9LC);
+PE9LC=E9LCT.*conj(E9LCT)/N;
+PE9LCM=PE9LC(1:Nm);...Espectro Potencia Alfa Final (grf)
+subplot(3,1,3)
+plot(f,PE9LCM,'b')
+grid on
+title('Espectro de Potencial E9: Banda Alfa')
+ylabel("PE9Alfa")
+
+%Energias
+EE9A=sum(PE9LCM.*PE9LCM)/Nm
+
+
+
+
+
+
+%%
+%Graficas Generales
+
+clc
+clear
+load('EEG.mat')
+N=length(EEG);
+Fs=1000;
+t=0:1/Fs:(1/Fs)*(N-1);
+
+    
+E1=EEG(:,1);
+E2=EEG(:,2);
+E3=EEG(:,3);
+E4=EEG(:,4);
+E5=EEG(:,5);
+E6=EEG(:,6);
+E7=EEG(:,7);
+E8=EEG(:,8);
+E9=EEG(:,9);
+
+
+subplot(9,1,1)
+plot(t,E1,"r")
+grid on
+title("Registro Temporal EGG")
+ylabel("E1")
+
+subplot(9,1,2)
+plot(t,E2,"g")
+grid on
+ylabel("E2")
+
+subplot(9,1,3)
+plot(t,E3,"b")
+grid on
+ylabel("E3")
+
+subplot(9,1,4)
+plot(t,E4,"c")
+ylabel("E4")
+grid on
+
+subplot(9,1,5)
+plot(t,E5,"m")
+ylabel("E5")
+grid on
+
+subplot(9,1,6)
+plot(t,E6,"y")
+ylabel("E6")
+grid on
+
+subplot(9,1,7)
+plot(t,E7,"k")
+ylabel("E7")
+grid on
+
+subplot(9,1,8)
+plot(t,E8,"r")
+ylabel("E8")
+grid on
+
+subplot(9,1,9)
+plot(t,E1,"b")
+ylabel("E1")
+grid on
+
+
