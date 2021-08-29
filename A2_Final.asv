@@ -741,24 +741,24 @@ E6HCT=fft(E6HC);
 PE6HC=E6HCT.*conj(E6HCT)/N;
 PE6HCM=PE6HC(1:Nm);...Espectro Potencia (grf)
 subplot(3,1,2)
-plot(f,PE6HCM,'g')
+plot(f,PE5HCM,'g')
 grid on
-title('Espectro de Potencial E6: Altas Frecuencias')
-ylabel("PE6HC")
+title('Espectro de Potencial E5: Altas Frecuencias')
+ylabel("PE5HC")
 
 %Señal Filtrada LC
-E6LC=filter(b2,a2,E6HC);
-E6LCT=fft(E6LC);
-PE6LC=E6LCT.*conj(E6LCT)/N;
-PE6LCM=PE6LC(1:Nm);...Espectro Potencia Alfa Final (grf)
+E5LC=filter(b2,a2,E5HC);
+E5LCT=fft(E5LC);
+PE5LC=E5LCT.*conj(E5LCT)/N;
+PE5LCM=PE5LC(1:Nm);...Espectro Potencia Alfa Final (grf)
 subplot(3,1,3)
-plot(f,PE6LCM,'b')
+plot(f,PE5LCM,'b')
 grid on
-title('Espectro de Potencial E6: Banda Alfa')
-ylabel("PE6Alfa")
+title('Espectro de Potencial E5: Banda Alfa')
+ylabel("PE5Alfa")
 
 %Energias
-EE6A=sum(PE6LCM.*PE6LCM)/Nm
+EE5A=sum(PE5LCM.*PE5LCM)/Nm
 
 
 
