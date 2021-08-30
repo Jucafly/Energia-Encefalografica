@@ -1153,11 +1153,16 @@ ylabel("PE9Alfa")
 EE9A=sum(PE9LCM.*PE9LCM)/Nm
 
 
+%%
+%ploteo general
+Ealfa=[EE1A]
 
 
 
 
 %%
+%Graficas Generales
+
 clc
 clear
 load('EEG.mat')
@@ -1176,39 +1181,51 @@ E7=EEG(:,7);
 E8=EEG(:,8);
 E9=EEG(:,9);
 
-
+figure
 subplot(9,1,1)
 plot(t,E1,"r")
-xlabel("E1")
+grid on
+title("Registro Temporal EGG")
+ylabel("E1")
 
 subplot(9,1,2)
 plot(t,E2,"g")
-xlabel("E2")
+grid on
+ylabel("E2")
 
 subplot(9,1,3)
 plot(t,E3,"b")
-xlabel("E3")
+grid on
+ylabel("E3")
 
 subplot(9,1,4)
 plot(t,E4,"c")
-xlabel("E4")
+ylabel("E4")
+grid on
 
 subplot(9,1,5)
 plot(t,E5,"m")
-xlabel("E5")
+ylabel("E5")
+grid on
 
 subplot(9,1,6)
 plot(t,E6,"y")
-xlabel("E6")
+ylabel("E6")
+grid on
 
 subplot(9,1,7)
-plot(t,E7,"")
-xlabel("E7")
+plot(t,E7,"k")
+ylabel("E7")
+grid on
 
-subplot(9,1,1)
-plot(t,E1,"")
-xlabel("E1")
+subplot(9,1,8)
+plot(t,E8,"r")
+ylabel("E8")
+grid on
 
-subplot(9,1,1)
-plot(t,E1,"")
-xlabel("E1")
+subplot(9,1,9)
+plot(t,E1,"b")
+ylabel("E1")
+grid on
+
+

@@ -1153,13 +1153,17 @@ ylabel("PE9Alfa")
 EE9A=sum(PE9LCM.*PE9LCM)/Nm
 
 
+%%
+%ploteo general
+Ealfa=[EE1A;EE2A;EE3A;EE4A;EE5A;EE6A;EE7A;EE8A;EE9A];
+bar(Ealfa)
 
 
 
 
 %%
 %Graficas Generales
-
+%{
 clc
 clear
 load('EEG.mat')
@@ -1177,8 +1181,9 @@ E6=EEG(:,6);
 E7=EEG(:,7);
 E8=EEG(:,8);
 E9=EEG(:,9);
+%}
 
-
+figure
 subplot(9,1,1)
 plot(t,E1,"r")
 grid on
