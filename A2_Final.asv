@@ -1,6 +1,6 @@
 %/-----------------------------E1-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -60,6 +60,8 @@ plot(f,PE1LCM,'b')
 grid on
 title('Espectro de Potencial E1: Banda Delta')
 ylabel("PE1Delta")
+
+EE1B=sum(PE1LCM.*PE1LCM)/Nm
 
 %/-----------------------------------------------------------------/
 
@@ -127,7 +129,7 @@ EE1A=sum(PE1LCM.*PE1LCM)/Nm
 %%
 %/-----------------------------E2-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -258,7 +260,7 @@ EE2A=sum(PE2LCM.*PE2LCM)/Nm
 %%
 %/-----------------------------E3-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -391,7 +393,7 @@ EE3A=sum(PE3LCM.*PE3LCM)/Nm
 %%
 %/-----------------------------E4-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -517,7 +519,7 @@ EE4A=sum(PE4LCM.*PE4LCM)/Nm
 %%
 %/-----------------------------E5-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -645,7 +647,7 @@ EE5A=sum(PE5LCM.*PE5LCM)/Nm
 %%
 %/-----------------------------E6-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -776,7 +778,7 @@ EE6A=sum(PE6LCM.*PE6LCM)/Nm
 %%
 %/-----------------------------E7-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -904,7 +906,7 @@ EE7A=sum(PE7LCM.*PE7LCM)/Nm
 %%
 %/-----------------------------E8-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -1037,7 +1039,7 @@ EE8A=sum(PE8LCM.*PE8LCM)/Nm
 %%
 %/-----------------------------E9-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -1155,14 +1157,19 @@ EE9A=sum(PE9LCM.*PE9LCM)/Nm
 
 %%
 %ploteo general
-Ealfa=[EE1A]
+Ealfa=[EE1A;EE2A;EE3A;EE4A;EE5A;EE6A;EE7A;EE8A;EE9A];
+figure
+bar(Ealfa)
 
 
+Ealfd=[EE1D;EE2D;EE3D;EE4D;EE5D;EE6D;EE7D;EE8D;EE9D];
+figure
+bar(Ealfd)
 
 
 %%
 %Graficas Generales
-
+%{
 clc
 clear
 load('EEG.mat')
@@ -1180,6 +1187,7 @@ E6=EEG(:,6);
 E7=EEG(:,7);
 E8=EEG(:,8);
 E9=EEG(:,9);
+%}
 
 figure
 subplot(9,1,1)

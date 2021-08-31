@@ -1,6 +1,6 @@
 %/-----------------------------E1-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -60,6 +60,8 @@ plot(f,PE1LCM,'b')
 grid on
 title('Espectro de Potencial E1: Banda Delta')
 ylabel("PE1Delta")
+
+EE1B=sum(PE1LCM.*PE1LCM)/Nm
 
 %/-----------------------------------------------------------------/
 
@@ -127,7 +129,7 @@ EE1A=sum(PE1LCM.*PE1LCM)/Nm
 %%
 %/-----------------------------E2-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -187,6 +189,8 @@ plot(f,PE2LCM,'b')
 grid on
 title('Espectro de Potencial E2: Banda Delta')
 ylabel("PE1Delta")
+
+EE2B=sum(PE2LCM.*PE2LCM)/Nm
 
 %/-----------------------------------------------------------------/
 
@@ -258,7 +262,7 @@ EE2A=sum(PE2LCM.*PE2LCM)/Nm
 %%
 %/-----------------------------E3-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -318,6 +322,9 @@ plot(f,PE3LCM,'b')
 grid on
 title('Espectro de Potencial E3: Banda Delta')
 ylabel("PE3Delta")
+
+
+EE3B=sum(PE3LCM.*PE3LCM)/Nm
 
 %/-----------------------------------------------------------------/
 
@@ -391,7 +398,7 @@ EE3A=sum(PE3LCM.*PE3LCM)/Nm
 %%
 %/-----------------------------E4-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -451,6 +458,8 @@ plot(f,PE4LCM,'b')
 grid on
 title('Espectro de Potencial E4: Banda Delta')
 ylabel("PE4Delta")
+
+EE4B=sum(PE4LCM.*PE4LCM)/Nm
 
 %/-----------------------------------------------------------------/
 
@@ -517,7 +526,7 @@ EE4A=sum(PE4LCM.*PE4LCM)/Nm
 %%
 %/-----------------------------E5-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -577,6 +586,8 @@ plot(f,PE5LCM,'b')
 grid on
 title('Espectro de Potencial E5: Banda Delta')
 ylabel("PE5Delta")
+
+EE5B=sum(PE5LCM.*PE5LCM)/Nm
 
 %/-----------------------------------------------------------------/
 
@@ -645,7 +656,7 @@ EE5A=sum(PE5LCM.*PE5LCM)/Nm
 %%
 %/-----------------------------E6-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -705,6 +716,10 @@ plot(f,PE6LCM,'b')
 grid on
 title('Espectro de Potencial E6: Banda Delta')
 ylabel("PE6Delta")
+
+EE6B=sum(PE6LCM.*PE6LCM)/Nm
+
+
 
 %/-----------------------------------------------------------------/
 
@@ -776,7 +791,7 @@ EE6A=sum(PE6LCM.*PE6LCM)/Nm
 %%
 %/-----------------------------E7-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -836,6 +851,9 @@ plot(f,PE7LCM,'b')
 grid on
 title('Espectro de Potencial E7: Banda Delta')
 ylabel("PE7Delta")
+
+EE7B=sum(PE7LCM.*PE7LCM)/Nm
+
 
 %/-----------------------------------------------------------------/
 
@@ -904,7 +922,7 @@ EE7A=sum(PE7LCM.*PE7LCM)/Nm
 %%
 %/-----------------------------E8-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -964,6 +982,9 @@ plot(f,PE8LCM,'b')
 grid on
 title('Espectro de Potencial E8: Banda Delta')
 ylabel("PE8Delta")
+
+
+EE8B=sum(PE8LCM.*PE8LCM)/Nm
 
 %/-----------------------------------------------------------------/
 
@@ -1037,7 +1058,7 @@ EE8A=sum(PE8LCM.*PE8LCM)/Nm
 %%
 %/-----------------------------E9-------------------------/
 clc
-clear
+%clear
 load('EEG.mat')
 %Parametrizacion
 N=length(EEG);
@@ -1098,6 +1119,9 @@ grid on
 title('Espectro de Potencial E9: Banda Delta')
 ylabel("PE9Delta")
 
+EE9B=sum(PE9LCM.*PE9LCM)/Nm
+
+
 %/-----------------------------------------------------------------/
 
 %3.2.4
@@ -1156,9 +1180,13 @@ EE9A=sum(PE9LCM.*PE9LCM)/Nm
 %%
 %ploteo general
 Ealfa=[EE1A;EE2A;EE3A;EE4A;EE5A;EE6A;EE7A;EE8A;EE9A];
+figure
 bar(Ealfa)
 
 
+Ealfd=[EE1B;EE2B;EE3B;EE4B;EE5B;EE6B;EE7B;EE8B;EE9B];
+figure
+bar(Ealfd)
 
 
 %%
