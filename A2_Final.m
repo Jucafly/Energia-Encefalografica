@@ -1183,12 +1183,14 @@ Ealfa=[EE1A;EE2A;EE3A;EE4A;EE5A;EE6A;EE7A;EE8A;EE9A];
 figure
 bar(Ealfa)
 title("Energias Delta")
+grid on 
 
 
 Ealfd=[EE1B;EE2B;EE3B;EE4B;EE5B;EE6B;EE7B;EE8B;EE9B];
 figure
 bar(Ealfd)
 title("Energias Alfas")
+grid on 
 
 
 %%
